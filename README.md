@@ -4,7 +4,28 @@ Collection of different interview questions
 
 # Given an array of ints, write a C# method to sum all the values that are even numbers.
 
+    using System;
+    using System.Linq;
 
+    class Program {
+
+        static void Main() {
+
+            int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+            Console.WriteLine(string.Join(" ", array));
+            Console.WriteLine(SumAllEvenNumbers(array));
+            Console.WriteLine(SumAllEvenNumbers2(array));
+        }
+
+        static long SumAllEvenNumbers(int[] intArray) {
+            return intArray.Where(i => i % 2 == 0).Sum(i => (long)i);
+        }
+
+        static long SumAllEvenNumbers2(int[] intArray) {
+            return (from i in intArray where i % 2 == 0 select (long)i).Sum();
+        }
+    }
 
 
 # What is the output of the short program below? Explain your answer.
