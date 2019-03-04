@@ -1,6 +1,12 @@
 # C# Interview Questions
 Collection of different interview questions
 
+
+# Given an array of ints, write a C# method to sum all the values that are even numbers.
+
+
+
+
 # What is the output of the short program below? Explain your answer.
 ## Default datatype values
 
@@ -23,6 +29,8 @@ Collection of different interview questions
             Console.WriteLine(default(DateTime));
         }
     }
-
-location is null
-1/1/0001 12:00:00 AM
+    
+    /*
+    location is null
+    1/1/0001 12:00:00 AM
+    */
