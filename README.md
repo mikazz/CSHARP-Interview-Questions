@@ -2,7 +2,7 @@
 Collection of different interview questions
 
 
-# Given an array of ints, write a C# method to sum all the values that are even numbers.
+# 1. Given an array of ints, write a C# method to sum all the values that are even numbers.
 
     using System;
     using System.Linq;
@@ -28,8 +28,7 @@ Collection of different interview questions
     }
 
 
-# What is the output of the short program below? Explain your answer.
-## Default datatype values
+# 2. What is the output of the short program below? Explain your answer. (Default datatype values)
 
     using System;
 
@@ -57,7 +56,7 @@ Collection of different interview questions
     */
 
 
-# Given an instance circle of the following class:
+# 3. Given an instance circle of the following class:
 
     public sealed class Circle {
         private double radius;
@@ -84,5 +83,52 @@ Collection of different interview questions
         private double radius = 5; // default value for double is 0
         public double Calculate(Func<double, double> op) {
             return op(radius);
+        }
+    }
+    
+# 4. What is the output of the program below? Explain your answer. (Threading and Async)
+
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    class Program {
+        private static string result;
+        private static string result2;
+
+        static void Main() {
+            SaySomething();
+            SaySomething2();
+            Console.WriteLine("Result: " + result);
+            Console.WriteLine("Result: " + result2);
+        }
+
+        static async Task<string> SaySomething() {
+            /* SaySomething() will just output a blank line (not "Hello world!").
+             * This is because result will still be uninitialized when Console.WriteLine is called.
+             *  
+             * The function called by await (in this case Task.Delay) is
+             * executed asynchronously, and the line after the await statement
+             * isn’t signaled to execute until Task.Delay completes (in 5 milliseconds).
+             * However, within that time, control has already returned to the caller,
+             * which executes the Console.WriteLine statement on a string that hasn’t
+             * yet been initialized.
+             *
+             */
+
+            await Task.Delay(5);
+            result = "Hello world!";
+            return "Something";
+        }
+
+        static async Task<string> SaySomething2() {
+            /*
+             * An async method without at least one await statement
+             * in it operates just like a synchronous method
+             */
+
+            Thread.Sleep(5);
+            result2 = "Hello world!";
+            return "Something";
         }
     }
