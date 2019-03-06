@@ -136,7 +136,7 @@ Collection of different interview questions
     }
 
 
-# 5. What is the output of the program below? Explain your answer.
+# 5. What is the output of the program below? Explain your answer. (Delegate)
 
 
     using System;
