@@ -86,7 +86,9 @@ Collection of different interview questions
         }
     }
     
+
 # 4. What is the output of the program below? Explain your answer. (Threading and Async)
+
 
     using System;
     using System.Threading;
@@ -130,5 +132,35 @@ Collection of different interview questions
             Thread.Sleep(5);
             result2 = "Hello world!";
             return "Something";
+        }
+    }
+
+
+# 5. What is the output of the program below? Explain your answer.
+
+
+    using System;
+    using System.Collections.Generic;
+
+    class Program {
+
+        delegate void Printer();
+        static void Main() {
+
+            List<Printer> printers = new List<Printer>();
+            int i=0;
+
+            for(; i < 10; i++){
+                // After we exit the loop, the variable i has been set to 10
+                // By the time each delegate is invoked, the value passed to all of them is 10.
+                Console.WriteLine("Value Inside Loop: " + i);
+                printers.Add(delegate { Console.WriteLine(i); });
+            }
+
+            Console.WriteLine("Value After Loop: " + i);
+
+            foreach (var printer in printers){
+                printer();
+            }
         }
     }
